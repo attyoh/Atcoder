@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
+#include <atcoder/all>
+using namespace atcoder;
 
 struct Unionfind {
   // tree number
@@ -37,6 +39,7 @@ int main() {
   cin >> n >> m;
   g.resize(n);
   Unionfind uf(n);
+  dsu ds(n);
   int res = 1;
   for (int i = 0; i < m; ++i) {
     int a, b;
@@ -45,9 +48,18 @@ int main() {
     uf.uni(a, b);
     g[a].push_back(b);
     g[b].push_back(a);
+    ds.merge(a,b);
   }
   for (int i = 0; i < n; ++i)
     if (g[i].size() > 2) res = 0;
+  int ans = 0;
+  for (int i=0; i<n; ++i) {
+    if (ds.leader(i)==i) ans++;
+  }
+  if (ans > 1) {
+    cout << "No" << endl;
+    return 0;
+  }
   if (res)
     cout << "Yes" << endl;
   else
