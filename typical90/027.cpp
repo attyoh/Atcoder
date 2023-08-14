@@ -4,12 +4,11 @@ using namespace std;
 
 int main() {
   int n; cin >> n;
-  vector<string> s(n);
-  rep(i,n) cin >> s[i];
-
   set<string> st;
   rep(i,n) {
-    if (st.count(s[i])) continue;
+    string s; cin >> s;
+    if (st.count(s)) continue;
+    st.insert(s);
     cout << i+1 << endl;
   }
   return 0;
