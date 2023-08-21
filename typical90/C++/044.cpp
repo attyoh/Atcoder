@@ -1,26 +1,28 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define rep(i,n) for (int i = 0; i < (n); ++i)
+using ll = long long;
 
 int main() {
-    int n, q;
-    cin >> n >> q;
-    vector<int> a(n);
+    int n; cin >> n;
+    vector<int> a(n), b(n), c(n);
     rep(i,n) cin >> a[i];
+    rep(i,n) cin >> b[i];
+    rep(i,n) cin >> c[i];
 
-    int shift = 0;
-    rep(i,q) {
-        int t, x, y;
-        cin >> t >> x >> y;
-        x--; y--;
-        
-        if (t == 1) {
-            swap(a[(x+shift)%n], a[(y+shift)%n]);
-        } else if (t == 2) {
-            shift = (shift+n-1)%n;
-        } else if (t == 3) {
-            cout << a[(x+shift)%n] << endl;
+    vector<int> an(46), bn(46), cn(46);
+    rep(i,n) {
+        ++an[a[i]%46];
+        ++bn[b[i]%46];
+        ++cn[c[i]%46];
+    }
+
+    ll ans = 0;
+    rep(i,46) rep(j,46) rep(k,46) {
+        if ((i + j + k) % 46 == 0) {
+            ans += (ll)an[i] * bn[j] * cn[k];
         }
     }
+    cout << ans << endl;
     return 0;
 }
