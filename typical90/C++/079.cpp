@@ -4,7 +4,7 @@ using namespace std;
 using ll = long long;
 
 int main() {
-    int h, w;
+    int h, w; 
     cin >> h >> w;
     vector<vector<int>> a(h, vector<int>(w)), b(h, vector<int>(w));
     rep(i,h) rep(j,w) cin >> a[i][j];
