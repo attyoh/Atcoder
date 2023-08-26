@@ -9,6 +9,6 @@ int main() {
 
     ll x = 1;
     rep(i,b) x *= c; 
-    cout << (a==x ? "Yes" : "No") << endl;
+    cout << (a<x ? "Yes" : "No") << endl;
     return 0;
 }
