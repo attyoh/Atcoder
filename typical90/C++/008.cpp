@@ -10,11 +10,13 @@ int main() {
     cin >> n >> s;
 
     string st = "atcoder";
-    vector<mint> dp(8);
-    dp[0] = 1;
-    for (char c : s) rep(i,7) if(c == st[i]) {
-        dp[i+1] += dp[i];
+    vector<vector<mint>> dp(n+1, vector<mint>(8));
+    dp[0][0] = 1;
+
+    rep(i,n) rep(j,8) {
+        dp[i + 1][j] += dp[i][j];
+        if (s[i] == st[j]) dp[i + 1][j + 1] += dp[i][j];
     }
-    cout << dp[7].val() << endl;
+    cout << dp[n][7].val() << endl;
     return 0;
 }
