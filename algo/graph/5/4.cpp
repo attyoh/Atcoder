@@ -1,3 +1,4 @@
+// 二部グラフ判定
 #include <bits/stdc++.h>
 using namespace std;
 
