@@ -1,3 +1,4 @@
+// s-tの存在判定
 #include <bits/stdc++.h>
 using namespace std;
 
